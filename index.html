@@ -71,6 +71,7 @@
 </div>
 
 <script>
+    let drawnImages = {};
     let images = [
         'family.jpg',
         'family_guy.jpg',
@@ -106,14 +107,23 @@
         if (Object.keys(drawnStudents).length != 8) {
             while (randomNumber in drawnStudents) {
                 randomNumber = Math.floor(Math.random() * 8);
-                console.log(randomNumber);
             }
         } else {
             $('td').css('text-decoration', 'none').css('color', 'black');
             drawnStudents = {};
         }
 
+        if (Object.keys(drawnImages).length != 10) {
+            while (imageNumber in drawnImages) {
+                imageNumber = Math.floor(Math.random() * 10);
+            }
+        } else {
+            drawnImages = {};
+        }
+
         drawnStudents[randomNumber] = students[randomNumber];
+        drawnImages[imageNumber] = images[imageNumber];
+
         $('#student-name').text(students[randomNumber]);
         $('#mem').attr('src', 'images/' + images[imageNumber]);
         $('#' + randomNumber + '').css('text-decoration', 'line-through').css('color', 'red');
